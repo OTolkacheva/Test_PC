@@ -1,0 +1,36 @@
+﻿@model Test_PC.Models.Request
+@{
+    ViewBag.Title = "Отправка запроса";
+}
+
+@using (Ajax.BeginForm("GetData", new AjaxOptions { UpdateTargetId = "continerfortable" }))
+{
+    <label>Введите запрос:</label>
+    <div class="form-group row">
+        @Html.LabelFor(x => x.BaseAddressId, null, new { @class = "col-sm-2 col-form-label" })
+        <div class="col-sm-5">
+            @Html.DropDownListFor(x => x.BaseAddressId, Model.SelectList, "Выберете базовый адрес сервиса", new { @class = "custom-select" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            @Html.LabelFor(x => x.Page, null, new { @class = "col-form-label" })
+            @Html.TextBoxFor(x => x.Page, null, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-4">
+            @Html.LabelFor(x => x.Limit, null, new { @class = "col-form-label" })
+            @Html.TextBoxFor(x => x.Limit, null, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-4">
+            @Html.LabelFor(x => x.Search, null, new { @class = "col-form-label" })
+            @Html.TextBoxFor(x => x.Search, null, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <button class="btn btn-outline-primary">Подтвердить</button>
+}
+<p></p>
+@Ajax.ActionLink("Отправить запросы", "SendRequest", null, new AjaxOptions { UpdateTargetId = "continerfortable" }, new { @class = "btn btn-outline-success" })
+<p></p>
+<div id="continerfortable">
+</div>

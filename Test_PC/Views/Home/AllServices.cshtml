@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Test_PC.EF.ServiceSetting>
+@{
+    ViewBag.Title = "Сервисы";
+}
+
+<h2>Сервисы</h2>
+<p>
+    <a href="@Url.Action("CreateService")" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Добавить сервис</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Базовый адрес</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseAddress)
+            </td>
+            <td>
+                <a href="@Url.Action("EditService", new { id=item.Id })" class="btn btn-outline-secondary"><i class="fa fa-edit" aria-hidden="true"></i>&nbsp; Редактировать</a>
+            </td>
+            <td>
+                <a href="@Url.Action("DeleteService", new { id=item.Id })" class="btn btn-outline-secondary"><i class="fa fa-remove" aria-hidden="true"></i>&nbsp; Удалить</a>
+            </td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,17 @@
+﻿<table class="table" id="table_request">
+    <thead>
+        <tr>
+            <th>Запрос</th>
+            <th>Дата выполнения</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.Request</td>
+                <td>@d.executAt</td>
+            </tr>
+        }
+    </tbody>
+</table>

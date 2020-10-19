@@ -1,0 +1,22 @@
+﻿@model Test_PC.EF.ServiceSetting
+
+@{
+    ViewBag.Title = "Редактирование сервиса";
+}
+
+<h2>Новый сервис</h2>
+
+<p>
+    <a href="@Url.Action("AllServices")" class="btn btn-outline-primary"><i class="fa fa-backward" aria-hidden="true"></i>&nbsp; Вернуться к списку</a>
+</p>
+
+@using (Html.BeginForm())
+{
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.BaseAddress, "Название сервиса")
+            @Html.EditorFor(model => model.BaseAddress, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+    <input type="submit" class="btn btn-outline-success" value="Редактировать" />
+}

@@ -1,0 +1,47 @@
+﻿@model Test_PC.Models.SearchByUser
+@{
+    ViewBag.Title = "Поиск запроса по пользователю";
+}
+
+@using (Ajax.BeginForm("GetRequestOnUser", new AjaxOptions { UpdateTargetId = "continerfortable" }))
+{
+    <div class="form-group row">
+        <div class="col-5">
+            <div class="form-check">
+                @Html.CheckBoxFor(x => x.NeedDate, new { @class = "form-check-input", @onclick = "Check()" })
+                @Html.LabelFor(x => x.NeedDate, new { @class = "form-check-label" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="start-date-input" class="col-1 col-form-label">Начальная дата</label>
+        <div class="col-3">
+            @Html.TextBoxFor(x => x.StartDate, new { @class = "form-control", @type = "date", @disabled = true })
+        </div>
+        <label for="final-date-input" class="col-1 col-form-label">Конечная дата</label>
+        <div class="col-3">
+            @Html.TextBoxFor(x => x.FinalDate, new { @class = "form-control", @type = "date", @disabled = true })
+        </div>
+    </div>
+    <label>Введите имя пользователя для поиска</label>
+    <div class="form-inline">
+        @Html.DropDownListFor(x => x.UserId, Model.SelectList, "Выберете пользователя", new { @class = "custom-select" })
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
+    </div>
+}
+<p></p>
+<div id="continerfortable"></div>
+
+<script>
+    function Check() {
+        console.log("fgdg");
+        if ($("#NeedDate").is(":checked")) {
+            $("#StartDate").attr("disabled", false);
+            $("#FinalDate").attr("disabled", false);
+        }
+        else {
+            $("#StartDate").attr("disabled", true);
+            $("#FinalDate").attr("disabled", true);
+        }
+    }
+</script>

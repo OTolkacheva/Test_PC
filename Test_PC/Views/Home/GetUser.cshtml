@@ -1,0 +1,19 @@
+﻿<table class="table" id="table_user">
+    <thead>
+        <tr>
+            <th>Идентификатор</th>
+            <th>Имя пользователя</th>
+            <th>Дата создания</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.id</td>
+                <td>@d.name</td>
+                <td>@d.createdAt</td>
+            </tr>
+        }
+    </tbody>
+</table>

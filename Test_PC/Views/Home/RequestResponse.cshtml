@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Test_PC.Models.ViewRequestResponse>
+
+@foreach (var req in Model)
+{
+    <h3>@req.Request</h3>
+    @Html.Partial("GetUser", req.LUs)
+}

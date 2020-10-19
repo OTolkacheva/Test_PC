@@ -1,0 +1,68 @@
+﻿@helper CurrentItem(String item)
+{
+    if (ViewContext.RouteData.Values["action"].ToString().Contains(item))
+    {
+        @:active
+    }
+    return;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link charset="utf-8" rel="icon" href="~/images/icons8-restart-52.ico" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jqueryval")
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-lg-2 navbar-container bg-light">
+                <!-- Вертикальное меню -->
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <span class="navbar-brand mb-0 h1">ReqToUs</span>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <!-- Пункты вертикального меню -->
+                        <ul class="navbar-nav nav-pills">
+                            <li class="nav-item">
+                                @Html.ActionLink("Отправка запроса", "Index", "Home", null, new { @class = "nav-link" + CurrentItem("Index") })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Выполненные запросы", "ViewDoneRequest", "Home", null, new { @class = "nav-link" + CurrentItem("ViewDoneRequest") })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Невыполненные запросы", "ViewNotDoneRequest", "Home", null, new { @class = "nav-link" + CurrentItem("ViewNotDoneRequest") })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Запросы, содержащие конкретного пользователя", "ViewRequestOnUser", "Home", null, new { @class = "nav-link" + CurrentItem("ViewRequestOnUser") })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Все пользователи", "ViewAllUsers", "Home", null, new { @class = "nav-link" + CurrentItem("ViewAllUsers") })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Пользватели, полученные по конкретному запросу", "ViewUserOnRequest", "Home", null, new { @class = "nav-link" + CurrentItem("ViewUserOnRequest") })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Работа с сервисами", "AllServices", "Home", null, new { @class = "nav-link" + CurrentItem("Service") })
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-8 col-lg-10 content-container">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Test_PC.Models.Message>
+
+<div class="validation-summary-errors alert alert-danger">
+    <ul>
+        @foreach(var mes in Model)
+        {
+            <li>@mes.TextMessage</li>
+        }
+    </ul>
+</div>
